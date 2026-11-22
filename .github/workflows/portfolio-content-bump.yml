@@ -1,0 +1,50 @@
+name: Open portfolio content bump PR
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  bump-portfolio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out content repository
+        uses: actions/checkout@v4
+        with:
+          path: content-source
+          persist-credentials: false
+
+      - name: Check out portfolio repository
+        uses: actions/checkout@v4
+        with:
+          repository: milesmoraliis759/portfolio
+          token: ${{ secrets.PORTFOLIO_BUMP_TOKEN }}
+          path: portfolio
+          persist-credentials: true
+          submodules: recursive
+
+      - name: Update content submodule pointer
+        working-directory: portfolio
+        run: |
+          git -C content fetch origin main
+          git -C content checkout --detach FETCH_HEAD
+          git add content
+
+      - name: Open or update content bump PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.PORTFOLIO_BUMP_TOKEN }}
+          path: portfolio
+          branch: automation/content-bump
+          base: main
+          delete-branch: true
+          commit-message: "content: update learning library"
+          title: "chore(content): update learning library"
+          body: |
+            This PR updates the portfolio's `content` Git submodule to the latest
+            commit on the content repository's `main` branch.
+
+            Automatically opened after content changes were merged to main.
