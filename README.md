@@ -14,6 +14,18 @@ Each item is an `.mdx` file with YAML frontmatter. Useful fields include `title`
 
 Set `published: false` to keep a draft off the website. Use `featured: true` for selected homepage highlights. Use lowercase, hyphen-separated filenames.
 
+### Pharmacy MDX components
+
+The portfolio renderer supports standard Markdown/GFM (headings, nested ordered and unordered lists, tables, blockquotes, task lists, links, inline code and fenced code) plus these reusable MDX components:
+
+- `<Callout type="note|tip|exam|caution" title="Optional title">…</Callout>` — explanatory notes and exam traps.
+- `<Definition term="Term">…</Definition>` — highlighted definitions.
+- `<Formula label="Optional label">…</Formula>` — centred formulas or equations.
+- `<DrugCard name="Drug" drugClass="Class" mechanism="Mechanism" uses="Uses" adverseEffects="Adverse effects" />` — compact drug profiles.
+- `<ProcessFlow title="Optional title">…</ProcessFlow>` — stepwise processes, usually containing a numbered list.
+
+Use these components only when they improve understanding; ordinary Markdown remains the default. The website styles tables for horizontal scrolling on small screens and preserves semantic list markup.
+
 ## Automatic portfolio update
 
 When a pull request is merged into `main`, GitHub Actions checks out the portfolio, advances its `content` submodule to the new content commit and opens or updates a PR in the portfolio repository. Review and merge that PR to publish the new material.
