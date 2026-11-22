@@ -10,6 +10,8 @@ permissions:
 jobs:
   bump-portfolio:
     runs-on: ubuntu-latest
+    env:
+      PORTFOLIO_BUMP_TOKEN: ${{ secrets.PORTFOLIO_BUMP_TOKEN }}
     steps:
       - name: Check out content repository
         uses: actions/checkout@v4
@@ -17,16 +19,22 @@ jobs:
           path: content-source
           persist-credentials: false
 
+      - name: Explain required setup when token is missing
+        if: ${{ env.PORTFOLIO_BUMP_TOKEN == '' }}
+        run: echo "::notice::Add the PORTFOLIO_BUMP_TOKEN repository secret to enable automatic portfolio bump PRs."
+
       - name: Check out portfolio repository
+        if: ${{ env.PORTFOLIO_BUMP_TOKEN != '' }}
         uses: actions/checkout@v4
         with:
           repository: milesmoraliis759/portfolio
-          token: ${{ secrets.PORTFOLIO_BUMP_TOKEN }}
+          token: ${{ env.PORTFOLIO_BUMP_TOKEN }}
           path: portfolio
           persist-credentials: true
           submodules: recursive
 
       - name: Update content submodule pointer
+        if: ${{ env.PORTFOLIO_BUMP_TOKEN != '' }}
         working-directory: portfolio
         run: |
           git -C content fetch origin main
@@ -34,9 +42,10 @@ jobs:
           git add content
 
       - name: Open or update content bump PR
+        if: ${{ env.PORTFOLIO_BUMP_TOKEN != '' }}
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.PORTFOLIO_BUMP_TOKEN }}
+          token: ${{ env.PORTFOLIO_BUMP_TOKEN }}
           path: portfolio
           branch: automation/content-bump
           base: main

@@ -2,72 +2,36 @@
 
 This repository stores the articles and structured learning material displayed by the companion portfolio website.
 
-The content is intentionally separate from the Next.js application. Write and maintain learning resources here; the portfolio reads these files from the `content/` Git submodule.
-
 ## Repository structure
 
-```
-content/
-├── articles/       # Opinion, explainers, experiences and long-form posts
-├── learning/       # Structured lessons and study notes
-├── categories/     # Optional category metadata
-└── README.md
-```
+- `articles/` — explainers, reflections and long-form posts
+- `learning/` — structured pharmacy lessons and revision notes
+- `.github/workflows/portfolio-content-bump.yml` — opens a PR in the portfolio after changes land on this repository's `main` branch
 
 ## MDX format
 
-Every article or lesson is an `.mdx` file with YAML frontmatter.
+Each item is an `.mdx` file with YAML frontmatter. Useful fields include `title`, `description`, `date`, `category`, `tags`, `readTime`, `level`, `featured` and `published`.
 
-```mdx
----
-title: "Understanding HPLC"
-description: "A beginner-friendly introduction to high-performance liquid chromatography."
-date: "2026-11-23"
-updated: "2026-11-23"
-category: "Pharmaceutical Analysis"
-tags:
-  - HPLC
-  - Chromatography
-  - GPAT
-readTime: "8 min read"
-level: "Beginner"
-featured: true
-published: true
----
+Set `published: false` to keep a draft off the website. Use `featured: true` for selected homepage highlights. Use lowercase, hyphen-separated filenames.
 
-# Understanding HPLC
+## Automatic portfolio update
 
-Write the lesson here using Markdown.
+When a pull request is merged into `main`, GitHub Actions checks out the portfolio, advances its `content` submodule to the new content commit and opens or updates a PR in the portfolio repository. Review and merge that PR to publish the new material.
 
-## Principle
+**One-time setup required:** In this repository, open **Settings → Secrets and variables → Actions → New repository secret** and add:
 
-Explain the concept in clear, exam-oriented language.
+- Name: `PORTFOLIO_BUMP_TOKEN`
+- Value: a fine-grained GitHub personal access token with access to `milesmoraliis759/portfolio`, granting **Contents: Read and write** and **Pull requests: Read and write**.
 
-## Key points
-
-- Keep each point focused.
-- Add examples, tables and diagrams where useful.
-```
+The workflow deliberately skips the cross-repository steps until this secret exists. Never commit the token or put it in a workflow file.
 
 ## Content conventions
 
-- Use lowercase, hyphen-separated filenames, for example `hplc-basics.mdx`.
-- Use `published: true` to make an item visible on the public site.
-- Use `featured: true` for selected homepage highlights.
-- Articles live in `articles/`; structured topic lessons live in `learning/`.
-- Use accurate sources for scientific and medical claims. Add a **References** section to evidence-based material.
-- Do not include patient-identifiable information or confidential training/company material.
-
-## Initial content roadmap
-
-1. Pharmaceutical Analysis — HPLC fundamentals
-2. Pharmaceutics — Dissolution testing
-3. Pharmacology — Antihypertensive drugs
-4. Pharmacognosy — Crude drug evaluation
-5. Industrial Pharmacy — Wet granulation workflow
+- Articles live in `articles/`; structured lessons live in `learning/`.
+- Use reliable sources for scientific and medical claims; include references where appropriate.
+- Do not publish patient-identifiable information or confidential company/training material.
+- Educational material is not personal medical advice.
 
 ## Companion website
 
-The Next.js portfolio consumes this repository as a Git submodule:
-
-[Portfolio repository](https://github.com/milesmoraliis759/portfolio)
+[Harsh Mishra — Portfolio](https://github.com/milesmoraliis759/portfolio)
