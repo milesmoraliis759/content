@@ -2,6 +2,10 @@
 
 This repository stores the articles and structured learning material displayed by the companion portfolio website.
 
+## Save content from any chat
+
+If Harsh says **“add this to my notes”**, **“save this to my portfolio”** or **“create an article from this”**, follow [`SAVE_TO_PORTFOLIO.md`](./SAVE_TO_PORTFOLIO.md) and the reusable [Save to Harsh's Portfolio skill](./.agents/skills/save-to-harsh-portfolio/SKILL.md). This repository is the source of truth for portfolio lessons and articles.
+
 ## Repository structure
 
 - `articles/` — explainers, reflections and long-form posts
@@ -23,6 +27,8 @@ The portfolio renderer supports standard Markdown/GFM (headings, nested ordered 
 - `<Formula label="Optional label">…</Formula>` — centred formulas or equations.
 - `<DrugCard name="Drug" drugClass="Class" mechanism="Mechanism" uses="Uses" adverseEffects="Adverse effects" />` — compact drug profiles.
 - `<ProcessFlow title="Optional title">…</ProcessFlow>` — stepwise processes, usually containing a numbered list.
+- `<QuickCheck question="…" options={["…", "…"]} answer={0} explanation="…" />` — one interactive concept question, commonly used in articles.
+- `<LessonQuiz title="…" questionsJson="…" />` — multi-question assessment at the end of a lesson; `questionsJson` is a JSON-encoded array of question objects.
 
 Use these components only when they improve understanding; ordinary Markdown remains the default. The website styles tables for horizontal scrolling on small screens and preserves semantic list markup.
 
