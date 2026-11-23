@@ -1,0 +1,133 @@
+---
+title: "Beer–Lambert Law and UV–Visible Spectroscopy"
+description: "Understand absorbance, transmittance, the Beer–Lambert equation, calibration curves, deviations and common numerical traps."
+date: "2026-11-23"
+category: "Pharmaceutical Analysis"
+tags: ["Beer Lambert law", "UV visible spectroscopy", "Absorbance", "Transmittance", "Analytical chemistry"]
+readTime: "11 min read"
+level: "Concept + numerical practice"
+featured: true
+published: true
+---
+
+# Beer–Lambert law
+
+UV–Visible spectroscopy measures how much ultraviolet or visible radiation a sample absorbs. Absorption occurs when molecules undergo electronic transitions.
+
+## 1. Absorbance and transmittance
+
+**Transmittance (T)** is the fraction of incident light that passes through the sample.
+
+\[
+T = \frac{I}{I_0}
+\]
+
+Where \(I_0\) is incident intensity and \(I\) is transmitted intensity.
+
+**Percentage transmittance** is:
+
+\[
+\%T = 100 \times T
+\]
+
+**Absorbance (A)** is:
+
+\[
+A = \log_{10}\left(\frac{I_0}{I}\right) = -\log_{10}(T)
+\]
+
+<Callout type="exam" title="Relationship to remember">
+Higher absorbance means lower transmittance. Absorbance is logarithmic, not a percentage.
+</Callout>
+
+## 2. Beer–Lambert equation
+
+<Formula label="Beer–Lambert law">A = εbc</Formula>
+
+- A = absorbance (dimensionless)
+- ε = molar absorptivity / molar extinction coefficient
+- b = optical path length (commonly cm)
+- c = concentration (commonly mol L⁻¹ when ε is expressed in L mol⁻¹ cm⁻¹)
+
+At a fixed wavelength and path length, absorbance is directly proportional to concentration within the law's valid range.
+
+## 3. Numerical example
+
+A solution has transmittance 0.1.
+
+\[
+A = -\log_{10}(0.1) = 1
+\]
+
+If transmittance is 10%, convert it to 0.10 before taking the logarithm. Do not substitute 10 directly.
+
+## 4. Calibration curve
+
+A calibration curve plots absorbance against known concentrations. In the linear range, the slope is related to εb. The unknown concentration can be estimated from its measured absorbance using the validated calibration model.
+
+<ProcessFlow title="Basic quantitative UV workflow">
+<ol>
+<li>Select a suitable analytical wavelength (often λmax after method development).</li>
+<li>Prepare a blank and reference standard solutions.</li>
+<li>Set the instrument and measure the blank.</li>
+<li>Measure standards and construct the calibration curve.</li>
+<li>Measure the sample under the same validated conditions.</li>
+<li>Calculate concentration, applying dilution factors and method requirements.</li>
+</ol>
+</ProcessFlow>
+
+## 5. Deviations from the law
+
+Real systems may deviate from ideal linearity because of:
+- High analyte concentration and molecular interactions.
+- Chemical equilibria or changes in the absorbing species.
+- Polychromatic radiation or excessive spectral bandwidth.
+- Stray light and instrument limitations.
+- Scattering, turbidity or an unsuitable blank.
+
+## 6. Common GPAT traps
+
+| Statement | Correct interpretation |
+|---|---|
+| Absorbance increases with concentration | True within the linear working range |
+| Transmittance and absorbance increase together | False; they move in opposite directions |
+| λmax is the wavelength of maximum absorbance | True |
+| Absorbance has units of concentration | False; absorbance is dimensionless |
+| Path length affects absorbance | True; A is proportional to b under ideal conditions |
+
+## Practice Questions
+
+**Q1. If transmittance is 1%, what is absorbance?**
+
+A. 0  
+B. 1  
+C. 2  
+D. 10
+
+**Answer: C.** T = 0.01, so A = −log₁₀(0.01) = 2.
+
+**Q2. Which factor is directly proportional to absorbance under ideal Beer–Lambert conditions?**
+
+A. Concentration  
+B. Transmittance  
+C. Wavelength in every case  
+D. Stray light
+
+**Answer: A.** At fixed wavelength and path length, absorbance is proportional to concentration.
+
+**Q3. What happens to transmittance when absorbance increases?**
+
+A. It increases  
+B. It decreases  
+C. It remains constant  
+D. It becomes equal to absorbance
+
+**Answer: B.** A = −log₁₀(T), so increasing absorbance corresponds to decreasing transmittance.
+
+## References
+
+- Beckett and Stenlake. Practical Pharmaceutical Chemistry.
+- Skoog, Holler and Crouch. Principles of Instrumental Analysis.
+- United States Pharmacopeia, General Chapter <857> Ultraviolet-Visible Spectroscopy.
+
+*Use a validated analytical method and current pharmacopoeial requirements for laboratory work.*
