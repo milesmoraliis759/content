@@ -2,6 +2,10 @@
 
 This repository stores the articles and structured learning material displayed by the companion portfolio website.
 
+## Save content from any chat
+
+If Harsh says **“add this to my notes”**, **“save this to my portfolio”** or **“create an article from this”**, follow [`SAVE_TO_PORTFOLIO.md`](./SAVE_TO_PORTFOLIO.md) and the reusable [Save to Harsh's Portfolio skill](./.agents/skills/save-to-harsh-portfolio/SKILL.md). This repository is the source of truth for portfolio lessons and articles.
+
 ## Repository structure
 
 - `articles/` — explainers, reflections and long-form posts
