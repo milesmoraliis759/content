@@ -27,6 +27,8 @@ The portfolio renderer supports standard Markdown/GFM (headings, nested ordered 
 - `<Formula label="Optional label">…</Formula>` — centred formulas or equations.
 - `<DrugCard name="Drug" drugClass="Class" mechanism="Mechanism" uses="Uses" adverseEffects="Adverse effects" />` — compact drug profiles.
 - `<ProcessFlow title="Optional title">…</ProcessFlow>` — stepwise processes, usually containing a numbered list.
+- `<QuickCheck question="…" options={["…", "…"]} answer={0} explanation="…" />` — one interactive concept question, commonly used in articles.
+- `<LessonQuiz title="…" questionsJson="…" />` — multi-question assessment at the end of a lesson; `questionsJson` is a JSON-encoded array of question objects.
 
 Use these components only when they improve understanding; ordinary Markdown remains the default. The website styles tables for horizontal scrolling on small screens and preserves semantic list markup.
 
