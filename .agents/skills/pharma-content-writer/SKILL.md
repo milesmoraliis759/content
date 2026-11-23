@@ -79,7 +79,7 @@ For numbers, limits, schedules, doses, formulae and legal requirements, state th
 
 ## MDX authoring
 
-Use only components supported by the current portfolio renderer. Existing known components include Callout, Definition, Formula, DrugCard and ProcessFlow. Do not invent unsupported JSX components or use raw HTML to fake a component. If a required feature is missing, describe the component contract for the developer.
+Use only components supported by the current portfolio renderer. Existing supported components include Callout, Definition, Formula, DrugCard, ProcessFlow, QuickCheck and LessonQuiz. Use QuickCheck for a single inline concept question in an article. Use LessonQuiz at the end of a lesson; pass its question array through the `questionsJson` string prop so it survives the MDX-to-client component boundary. Do not invent unsupported JSX components or use raw HTML to fake a component. For LessonQuiz, serialize an array of `{ question, options, answer, explanation }` objects as JSON inside `questionsJson={"..."}`. `answer` is a zero-based option index. If a required feature is missing, describe the component contract for the developer.
 
 Follow the content repository's frontmatter conventions. Keep slugs lowercase and hyphenated. Use published: false for drafts. Do not claim a lesson quiz exists until the renderer supports and displays it.
 
